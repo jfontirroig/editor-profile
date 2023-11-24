@@ -3,6 +3,8 @@
 ## AMBIENTE DESARROLLO
 
 1. CREAR BUILD
+
+   
    cd  /home/jfontirroig/pact/editor-profile
    sudo npm install
    sudo npm run build
