@@ -58,6 +58,7 @@ sudo ufw allow 'Nginx Full'
 
 Default server configuration
 
+``` 
   server {
             listen [::]:443 ssl ipv6only=on; # managed by Certbot
             listen 443 ssl; # managed by Certbot
@@ -86,7 +87,7 @@ Default server configuration
          server_name domains.paradigma.global;
          return 404; # managed by Certbot
   }
-
+``` 
 
 License
 MIT
