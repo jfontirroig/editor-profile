@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "a884058f-e4ce-48c7-88a6-ee7f06add3e0",
+		"name": "FAD_API_UAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"if (jsonData[\"access_token\"] != null) {",
+							"    postman.setEnvironmentVariable(\"auth_token\", jsonData[\"access_token\"]);",
+							"}",
+							"if (jsonData[\"token_type\"] != null) {",
+							"    postman.setEnvironmentVariable(\"auth_type\", jsonData[\"token_type\"]);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "MjhkN2Q3MmJiYTVmZGM0NmYxZjdkYWJjYmQ2NjA1ZDUzZTVhOWM1ZGU4NjAxNWUxODZkZWFiNzMwYTRmYzUyYg==",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "ZmFkLWMyYy1wb3J0YWw=",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "applicationSrc",
+						"type": "text",
+						"value": "SMNYL",
+						"disabled": true
+					},
+					{
+						"description": "SMNYL",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Basic Wm1Ga0xXTXlZeTF3YjNKMFlXdz06TWpoa04yUTNNbUppWVRWbVpHTTBObVl4Wmpka1lXSmpZbVEyTmpBMVpEVXpaVFZoT1dNMVpHVTROakF4TldVeE9EWmtaV0ZpTnpNd1lUUm1ZelV5WWc9PQ==",
+						"disabled": true
+					},
+					{
+						"description": "FAD",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Basic ZmFkOmZhZHNlY3JldA==",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "\"Usuario\"",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "\"Contraseña como SHA256\"",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://uat.firmaautografa.com/authorization-server/oauth/token",
+					"protocol": "https",
+					"host": [
+						"uat",
+						"firmaautografa",
+						"com"
+					],
+					"path": [
+						"authorization-server",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Requisition B2C",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "xml",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "pdf",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "hash",
+							"value": "\"Contraseña como SHA256\"",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://uat.firmaautografa.com/requisitions/createRequisitionB2C",
+					"protocol": "https",
+					"host": [
+						"uat",
+						"firmaautografa",
+						"com"
+					],
+					"path": [
+						"requisitions",
+						"createRequisitionB2C"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

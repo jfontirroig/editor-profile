@@ -1,0 +1,24 @@
+
+/* Inactive tab */
+.myTab {
+    background-color: aliceblue;
+    color: orange;
+}
+
+.myTab :hover {
+    background-color: beige;
+}
+
+/* Active tab */
+.myTab :active,
+.myTab :active :hover,
+.myTab :active :focus {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+/* Disabled tab */
+.myTab :disabled {
+    background-color: lightgray;
+    color: darkgray;
+}
